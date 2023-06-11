@@ -1,5 +1,6 @@
 ﻿using DesafioMxM.Domain;
 using DesafioMxM.Domain.Models;
+using DesafioMxM.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DesafioMxM.Repositories;
@@ -7,9 +8,9 @@ namespace DesafioMxM.Repositories;
 public abstract class BaseRepository<T> : IRepository<T> where T : Entity
 {
 
-    protected readonly BankContext _bankContext;
+    protected readonly ApplicationContext _bankContext;
 
-    public BaseRepository(BankContext bankContext)
+    public BaseRepository(ApplicationContext bankContext)
     {
         _bankContext = bankContext;
     }

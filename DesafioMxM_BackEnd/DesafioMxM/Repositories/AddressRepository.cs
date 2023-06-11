@@ -4,9 +4,9 @@ using DesafioMxM.Repositories.Interfaces;
 
 namespace DesafioMxM.Repositories;
 
-public class UserRepository : BaseRepository<User>, IUserRepository
+public class AddressRepository : BaseRepository<Address>, IAddressRepository
 {
-    public UserRepository(ApplicationContext context) : base(context)
+    public AddressRepository(ApplicationContext context) : base(context)
     {
 
     }

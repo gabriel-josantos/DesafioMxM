@@ -3,14 +3,14 @@
 using DesafioMxM.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-public class BankContext : DbContext
+public class ApplicationContext : DbContext
 {
 
     public DbSet<User> Users { get; set; }
 
     public DbSet<Address> Addresses { get; set; }
 
-    public BankContext(DbContextOptions options) : base(options)
+    public ApplicationContext(DbContextOptions options) : base(options)
     {
 
     }

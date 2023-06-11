@@ -1,9 +1,9 @@
 ﻿using DesafioMxM.Domain.Models;
 
-namespace DesafioMxM.Repositories;
+namespace DesafioMxM.Repositories.Interfaces;
 
-    public interface IRepository<T> where T:Entity
-    {
+public interface IRepository<T> where T : Entity
+{
     Task<IEnumerable<T>> GetAll();
     Task Create(T entity);
 
@@ -11,4 +11,4 @@ namespace DesafioMxM.Repositories;
 
     Task Delete(T entity);
 
-    }
+}
