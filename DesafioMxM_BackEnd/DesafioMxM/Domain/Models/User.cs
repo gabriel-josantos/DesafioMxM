@@ -10,7 +10,9 @@ namespace DesafioMxM.Domain.Models;
 public class User : Entity
 {
     [Required]
-    public long Cpf { get; set; }
+    public string type { get; set; }
+    [Required]
+    public long legalId { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]
