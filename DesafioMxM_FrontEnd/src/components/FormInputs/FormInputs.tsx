@@ -1,13 +1,15 @@
-import styles from "./Form.module.css";
+import styles from "../Form/Form.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 
 interface FormProps {
+  validators: any[];
   labels: string[];
   names: string[];
   placeholders: string[];
   onChangeHandlers: any[];
   register: any;
   errors: any;
+  isLoading: boolean;
 }
 
 export function FormInputs(props: FormProps) {
@@ -16,18 +18,31 @@ export function FormInputs(props: FormProps) {
       {props.labels.map((label, i) => (
         <>
           <div
-            key={props.names[i]}
             className={`${styles["form-group"]} ${
               props.names[i] === "postalCode" ? styles["postal-code"] : ""
             }`}
           >
             <label>
               {label}
-              <span className={styles["error-message"]}>*</span>
+              {i === props.names.length - 1 ? (
+                <span> (opcional)</span>
+              ) : (
+                <span className={styles["error-message"]}>*</span>
+              )}
             </label>
+            {props.isLoading &&
+              (props.names[i] === "state" ||
+                props.names[i] === "city" ||
+                props.names[i] === "street" ||
+                props.names[i] === "neighborhood") && (
+                <div className={styles["loading-spinner"]} />
+              )}
             <input
               className='form-control'
-              {...props.register(props.names[i])}
+              {...props.register(props.names[i], {
+                required: "Campo obrigatorio",
+                validate: (value: any) => props.validators[i](value),
+              })}
               placeholder={props.placeholders[i]}
               onChange={props.onChangeHandlers[i]}
             />

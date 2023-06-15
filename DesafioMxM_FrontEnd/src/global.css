@@ -15,3 +15,41 @@
 body {
   background-color: black;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh !important;
+  padding: 20px;
+  margin: auto;
+  width: 50vw;
+  background-color: #092947;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.title {
+  margin: auto !important;
+  margin-bottom: 20px !important;
+  font-weight: bolder;
+}
+
+.btn {
+  margin-top: 20px !important;
+  margin: auto;
+  background-color: #f4563b;
+  font: 500 14px/120% Poppins, sans-serif;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border: none;
+  border-radius: 15px 0;
+  display: flex;
+  column-gap: 6px;
+  align-items: center;
+  color: var(--color-primary-100);
+}
+
+.btn:hover {
+  transition: 0.5s;
+  background-color: #e63719;
+}
