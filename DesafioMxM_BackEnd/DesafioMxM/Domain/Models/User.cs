@@ -4,15 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioMxM.Domain.Models;
 
-//[Index(nameof(Email), IsUnique = true)]
-//[Index(nameof(Cpf), IsUnique = true)]
-//[Index(nameof(PhoneNumber), IsUnique = true)]
+[Index(nameof(Email), IsUnique = true)]
+[Index(nameof(LegalId), IsUnique = true)]
+[Index(nameof(PhoneNumber), IsUnique = true)]
 public class User : Entity
 {
     [Required]
-    public string type { get; set; }
+    public string Type { get; set; }
     [Required]
-    public long legalId { get; set; }
+    public string LegalId { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]

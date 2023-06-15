@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioMxM.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230609204040_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20230615191347_Update data model")]
+    partial class Updatedatamodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,11 +30,11 @@ namespace DesafioMxM.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("BaseAddress")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CityName")
+                    b.Property<string>("Complement")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -46,7 +46,11 @@ namespace DesafioMxM.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("StateName")
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Street")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -67,10 +71,11 @@ namespace DesafioMxM.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long>("Cpf")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LegalId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -79,6 +84,10 @@ namespace DesafioMxM.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("longtext");
 

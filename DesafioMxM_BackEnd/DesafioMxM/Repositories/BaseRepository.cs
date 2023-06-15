@@ -8,22 +8,27 @@ namespace DesafioMxM.Repositories;
 public abstract class BaseRepository<T> : IRepository<T> where T : Entity
 {
 
-    protected readonly ApplicationContext _bankContext;
+    protected readonly ApplicationContext _dbContext;
 
     public BaseRepository(ApplicationContext bankContext)
     {
-        _bankContext = bankContext;
+        _dbContext = bankContext;
     }
     public async Task Create(T entity)
     {
-        await _bankContext.Set<T>().AddAsync(entity);
-        await _bankContext.SaveChangesAsync();
+        await _dbContext.Set<T>().AddAsync(entity);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<T> GetById(long id)
+    {
+        return await _dbContext.Set<T>().FindAsync(id);
     }
 
 
     public async Task<IEnumerable<T>> GetAll()
     {
-        return await _bankContext.Set<T>().ToListAsync();
+        return await _dbContext.Set<T>().ToListAsync();
     }
 
     public Task Update(T entity)

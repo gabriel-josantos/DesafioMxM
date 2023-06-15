@@ -1,3 +1,4 @@
+using AutoMapper;
 using DesafioMxM.Domain;
 using DesafioMxM.Repositories;
 using DesafioMxM.Repositories.Interfaces;
@@ -20,6 +21,8 @@ options
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+
+
 
 // Add services to the container.
 

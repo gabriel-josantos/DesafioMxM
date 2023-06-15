@@ -22,6 +22,17 @@ public class UserController : ControllerBase
         _mapper = mapper;
     }
 
+
+    /// <summary>
+    /// Cria uma nova conta para o usuário.
+    /// </summary>
+    /// <remarks>
+    /// Aqui você pode fornecer detalhes adicionais sobre a ação.
+    /// </remarks>
+    /// <param name="signupDto">Dados do formulário de cadastro.</param>
+    /// <returns>Um objeto com a mensagem "successful"</returns>
+    /// <response code="201">Retorna a resposta com sucesso.</response>
+    /// <response code="400">Retorna a resposta com erro.</response>
     [HttpPost]
 
     public async Task CreateUser([FromBody] SignupDto signupDto)
@@ -40,11 +51,20 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-
     public async Task<IActionResult> GetAllUsers()
     {
         var users = await _userRepository.GetAll();
-        return Ok(users);
+        var userDtos = _mapper.ProjectTo<UserDto>(users.AsQueryable()).ToList();
+        return Ok(userDtos);
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<IActionResult> GetUserById(int id)
+    {
+        User user = await _userRepository.GetById(id);
+        UserDto userDto = _mapper.Map<UserDto>(user);
+        return Ok(userDto);
     }
 
 }
