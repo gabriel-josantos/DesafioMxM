@@ -51,6 +51,7 @@ export function Form() {
       data.legalId = cleanMask(data.legalId);
       data.phoneNumber = cleanMask(data.phoneNumber);
       data.postalCode = cleanMask(data.postalCode);
+      console.log(data);
 
       setIsSubmitting(true);
 
@@ -117,17 +118,33 @@ export function Form() {
         <div className={styles["form-box"]}>
           <FormInputs
             validators={[
-              true,
+              () => {
+                ("");
+              },
               validateCpfOrCnpj,
               validateEmail,
               validatePhoneNumber,
-              true,
-              true,
-              true,
-              true,
-              true,
-              true,
-              true,
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
+              () => {
+                ("");
+              },
             ]}
             isLoading={isLoading}
             labels={[

@@ -10,7 +10,7 @@ export function Checkbox(props: checkboxProps) {
   return (
     <div className={styles["checkbox-group"]}>
       {props.values.map((value) => (
-        <label>
+        <label key={value}>
           <input
             type='radio'
             name='options'

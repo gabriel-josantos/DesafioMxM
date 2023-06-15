@@ -1,7 +1,5 @@
 :root {
   --color-primary-100: #fff;
-  --color-secundary-200: #05c7f2;
-  --color-secundary-500: #0d6073;
 }
 
 * {
@@ -41,11 +39,8 @@ body {
   font: 500 14px/120% Poppins, sans-serif;
   text-transform: uppercase;
   padding: 13px 26px;
-  border: none;
   border-radius: 15px 0;
   display: flex;
-  column-gap: 6px;
-  align-items: center;
   color: var(--color-primary-100);
 }
 

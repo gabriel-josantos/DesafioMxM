@@ -1,8 +1,9 @@
+import { Fragment } from "react";
 import styles from "../Form/Form.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 
 interface FormProps {
-  validators: any[];
+  validators: Array<(value: any) => any>;
   labels: string[];
   names: string[];
   placeholders: string[];
@@ -16,7 +17,7 @@ export function FormInputs(props: FormProps) {
   return (
     <>
       {props.labels.map((label, i) => (
-        <>
+        <Fragment key={i}>
           <div
             className={`${styles["form-group"]} ${
               props.names[i] === "postalCode" ? styles["postal-code"] : ""
@@ -57,7 +58,7 @@ export function FormInputs(props: FormProps) {
           {i === 3 && (
             <h5 className={styles["form-subtitle"]}>Informações de Endereço</h5>
           )}
-        </>
+        </Fragment>
       ))}
     </>
   );
