@@ -41,7 +41,8 @@ export function FormInputs(props: FormProps) {
             <input
               className='form-control'
               {...props.register(props.names[i], {
-                required: "Campo obrigatorio",
+                required:
+                  i === props.names.length - 1 ? false : "Campo Obrigatorio",
                 validate: (value: any) => props.validators[i](value),
               })}
               placeholder={props.placeholders[i]}
