@@ -1,4 +1,3 @@
-import { setEnvironmentData } from "worker_threads";
 import styles from "./SuccessModal.module.css";
 
 export function SuccessModal(props: any) {

@@ -5,6 +5,8 @@ import styles from "./style.module.css";
 
 export function UserInfo() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [userData, setUserData] = useState({
     type: "",
@@ -24,11 +26,17 @@ export function UserInfo() {
   async function getUserData() {
     try {
       const id = inputRef.current?.value;
-      const { data } = await axios.get(`https://localhost:7042/users/${id}`);
+      setIsLoading(true);
+      const { data } = await axios.get(
+        `https://mxmchallenge.up.railway.app/users/${id}`
+      );
       if (inputRef.current) inputRef.current.value = "";
       setUserData(data);
-    } catch (err) {
-      console.error(err);
+      setIsLoading(false);
+    } catch (err: any) {
+      setIsLoading(false);
+      if (err.response) setError(err.response.data);
+      setError("Algo deu errado");
     }
   }
 
@@ -42,9 +50,10 @@ export function UserInfo() {
           ref={inputRef}
         />
         <button className={styles["btn-search"]} onClick={getUserData}>
-          Consultar usuario
+          {isLoading ? "Carregando..." : "Consultar usuario"}
         </button>
       </div>
+      {error && <p className='error-message'>{error}</p>}
       <h5>Dados Gerais</h5>
       <UserOutput
         labels={[

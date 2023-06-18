@@ -48,3 +48,7 @@ body {
   transition: 0.5s;
   background-color: #e63719;
 }
+
+.error-message {
+  color: red;
+}

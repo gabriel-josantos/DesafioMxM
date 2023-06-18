@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import styles from "../Form/Form.module.css";
+import styles from "../Form/style.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 
 interface FormProps {
-  validators: Array<(value: any) => any>;
+  validators: Array<(value: string) => any>;
   labels: string[];
   names: string[];
   placeholders: string[];
@@ -28,7 +28,7 @@ export function FormInputs(props: FormProps) {
               {i === props.names.length - 1 ? (
                 <span> (opcional)</span>
               ) : (
-                <span className={styles["error-message"]}>*</span>
+                <span className='error-message'>*</span>
               )}
             </label>
             {props.isLoading &&
@@ -51,7 +51,7 @@ export function FormInputs(props: FormProps) {
               errors={props.errors}
               name={props.names[i]}
               render={({ message }) => (
-                <p className={styles["error-message"]}>{message}</p>
+                <p className='error-message'>{message}</p>
               )}
             />
           </div>

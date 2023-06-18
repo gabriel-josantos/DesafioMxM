@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "./style.module.css";
 import axios from "axios";
 import { maskJs } from "mask-js";
 import { useState } from "react";
@@ -17,7 +17,7 @@ import { Checkbox } from "../../utils/CheckBox/CheckBox";
 import { FormInputs } from "../FormInputs/FormInputs";
 
 export function Form() {
-  const [selectedOption, setSelectedOption] = useState("pessoa fisica");
+  const [selectedOption, setSelectedOption] = useState("Pessoa física");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +39,7 @@ export function Form() {
   }
 
   function valueBasedOnCpfOrCnpj(value1: any, value2: any) {
-    return selectedOption === "pessoa fisica" ? value1 : value2;
+    return selectedOption === "Pessoa física" ? value1 : value2;
   }
 
   async function onSubmit(data: any) {
@@ -56,18 +56,19 @@ export function Form() {
       setIsSubmitting(true);
 
       const response = await axios.post(
-        "https://localhost:7042/users",
+        "https://mxmchallenge.up.railway.app/users",
         JSON.stringify(data),
         {
           headers,
         }
       );
+      console.log(response);
       setIsSubmitting(false);
       reset();
       setShowModal(true);
       //
     } catch (err) {
-      console.error(err);
+      console.error();
     }
   }
 
@@ -93,7 +94,7 @@ export function Form() {
           setValue("city", localidade || "", { shouldValidate: false });
           setValue("state", uf || "", { shouldValidate: false });
           setIsLoading(false);
-        }, 1000);
+        }, 500);
       }
     } catch (err) {
       console.error(err);
@@ -104,7 +105,7 @@ export function Form() {
     <div className='container'>
       <h2 className='title'>Cadastro de Usuario</h2>
       <Checkbox
-        values={["pessoa fisica", "pessoa juridica"]}
+        values={["Pessoa física", "Pessoa juridica"]}
         onChangeHandler={checkboxHandler}
         checkedStatusState={selectedOption}
       />
@@ -112,7 +113,7 @@ export function Form() {
         <h5 className={styles["form-subtitle"]}>
           {valueBasedOnCpfOrCnpj(
             "Informações Pessoais",
-            "Informações empresariais"
+            "Informações Empresariais"
           )}
         </h5>
         <div className={styles["form-box"]}>

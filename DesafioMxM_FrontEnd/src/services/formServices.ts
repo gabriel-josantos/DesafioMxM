@@ -38,8 +38,8 @@ export function validatePhoneNumber(value: any) {
 
 export function validateCpfOrCnpj(value: string) {
   value = cleanMask(value);
-  if (value.length === 11 && !cpf.isValid(value)) return "Cpf invalido";
-  if (value.length === 14 && !cnpj.isValid(value)) return "Cnpj invalido";
+  if (value.length === 11 && !cpf.isValid(value)) return "CPF invalido";
+  if (value.length === 14 && !cnpj.isValid(value)) return "CNPJ invalido";
 
   return true;
 }
