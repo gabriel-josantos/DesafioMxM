@@ -1,0 +1,44 @@
+.btn-search {
+  background-color: #f4563b;
+  font: 500 14px/120% Poppins, sans-serif;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border: none;
+  column-gap: 6px;
+  align-items: center;
+  color: #fff;
+}
+
+.btn-search:hover {
+  transition: 0.5s;
+  background-color: #e63719;
+}
+
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  color: black;
+}
+
+.user {
+  padding: 5px;
+  display: flex;
+  gap: 20px;
+  border: 1px solid;
+}
+
+.label {
+  width: 20%;
+}
+
+.value {
+  width: 50%;
+}
+
+h5 {
+  margin-top: 10px;
+}

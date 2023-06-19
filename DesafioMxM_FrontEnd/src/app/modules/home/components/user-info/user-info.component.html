@@ -1,1 +1,15 @@
-<p>user-info works!</p>
+<div class="container">
+  <h2 class="title">Dados de Usuario</h2>
+  <div class="search-box">
+    <input class="search-input" placeholder="Digite o id de usuario" />
+    <button class="btn-search">Consultar usuario</button>
+  </div>
+
+  <!-- <p class="error-message"></p> -->
+
+  <h5>Dados Gerais</h5>
+  <div *ngFor="let data of userData" class="user">
+    <div class="label">{{ data.label }}</div>
+    <div class="value">{{ data.name }}</div>
+  </div>
+</div>

@@ -1,1 +1,55 @@
-<p>form works!</p>
+<div class="container">
+  <h2 class="title">Cadastro de Usuário</h2>
+
+  <form (submit)="submitForm()" [formGroup]="formRegister">
+    <div class="checkbox-group">
+      <label *ngFor="let option of checkboxOptions">
+        <input
+          name="type"
+          type="radio"
+          (click)="updateFormData(option)"
+          value="{{ option }}"
+          formControlName="type"
+        />
+        <span>{{ option }}</span>
+      </label>
+    </div>
+    <h5 class="form-subtitle">
+      {{
+        valueBasedOnCpfOrCnpj(
+          "Informações Pessoais",
+          "Informações Empresariais"
+        )
+      }}
+    </h5>
+
+    <div class="form-box">
+      <div
+        *ngFor="let item of formData"
+        class="form-group"
+        [ngClass]="{ 'postal-code': item.name === 'postalCode' }"
+      >
+        <label>{{ item.label }}<span class="error-message">*</span></label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="{{ item.name }}"
+          placeholder="{{ item.placeholder }}"
+        />
+        <p
+          *ngIf="showErrors && formRegister.get(item.name)?.errors"
+          class="error-message"
+        >
+          O campo {{ item.label }} é obrigatorio
+        </p>
+        <h5 *ngIf="item.name === 'email'" class="form-subtitle">
+          Informações de Endereço
+        </h5>
+      </div>
+    </div>
+    <button type="submit" class="btn" (click)="submitForm()">
+      Criar conta
+    </button>
+  </form>
+  <app-modal *ngIf="showModal"></app-modal>
+</div>

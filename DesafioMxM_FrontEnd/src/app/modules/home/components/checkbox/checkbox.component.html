@@ -1,0 +1,11 @@
+<div class="checkbox-group">
+  <label *ngFor="let option of checkboxOptions">
+    <input
+      name="options"
+      type="radio"
+      (click)="updateFormData(option)"
+      value="{{ option }}"
+    />
+    <span>{{ option }}</span>
+  </label>
+</div>
