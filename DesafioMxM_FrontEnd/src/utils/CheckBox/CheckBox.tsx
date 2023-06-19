@@ -1,4 +1,4 @@
-import styles from "./CheckBox.module.css";
+import styles from "./style.module.css";
 
 interface checkboxProps {
   values: string[];
@@ -18,7 +18,7 @@ export function Checkbox(props: checkboxProps) {
             value={value}
             onChange={props.onChangeHandler}
           />
-          <span>{value.replace(value[0], value[0].toUpperCase())}</span>
+          <span>{value}</span>
         </label>
       ))}
     </div>

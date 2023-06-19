@@ -1,10 +1,10 @@
-import styles from "./SuccessModal.module.css";
+import styles from "./style.module.css";
 
-export function SuccessModal(props: any) {
+export function Modal(props: any) {
   return (
     <div className={styles.modal}>
       <div className={styles["modal-content"]}>
-        <h3>Conta criada com sucesso!</h3>
+        <h3>{props.message}</h3>
         <button onClick={props.onClose}>Fechar</button>
       </div>
     </div>

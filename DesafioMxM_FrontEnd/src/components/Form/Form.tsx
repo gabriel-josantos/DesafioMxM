@@ -3,7 +3,7 @@ import axios from "axios";
 import { maskJs } from "mask-js";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { SuccessModal } from "../../utils/Modal/SuccessModal";
+import { Modal } from "../../utils/Modal/Modal";
 import {
   cleanMask,
   applyCnpjMask,
@@ -51,7 +51,6 @@ export function Form() {
       data.legalId = cleanMask(data.legalId);
       data.phoneNumber = cleanMask(data.phoneNumber);
       data.postalCode = cleanMask(data.postalCode);
-      console.log(data);
 
       setIsSubmitting(true);
 
@@ -209,7 +208,9 @@ export function Form() {
           {isSubmitting ? "Criando conta..." : "Criar conta"}
         </button>
       </form>
-      {showModal && <SuccessModal onClose={modalHandler} />}
+      {showModal && (
+        <Modal onClose={modalHandler} message='Conta criada com sucesso!' />
+      )}
     </div>
   );
 }

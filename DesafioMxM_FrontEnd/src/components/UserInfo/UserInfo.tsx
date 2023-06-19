@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { UserOutput } from "../UserOutput/UserOutput";
 import styles from "./style.module.css";
+import { maskJs } from "mask-js";
 
 export function UserInfo() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +32,17 @@ export function UserInfo() {
         `https://mxmchallenge.up.railway.app/users/${id}`
       );
       if (inputRef.current) inputRef.current.value = "";
+
+      // if (data.type === "Pessoa física")
+      //   data.legalId = maskJs("999.999.999-99", data.legalId);
+      // if (data.type === "Pessoa juridica")
+      //   data.legalId = maskJs("99.999.999/9999-99", data.legalId);
+
+      // data.phoneNumber = maskJs("(99) 9 9999-9999", data.phoneNumber);
+      // data.postalCode = maskJs("99999-999", data.postalCode);
+
       setUserData(data);
+
       setIsLoading(false);
     } catch (err: any) {
       setIsLoading(false);
