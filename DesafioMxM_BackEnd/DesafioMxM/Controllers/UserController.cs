@@ -23,16 +23,14 @@ public class UserController : ControllerBase
     }
 
 
-    /// <summary>
-    /// Cria uma nova conta para o usuário.
-    /// </summary>
-    /// <remarks>
-    /// Aqui você pode fornecer detalhes adicionais sobre a ação.
-    /// </remarks>
-    /// <param name="signupDto">Dados do formulário de cadastro.</param>
-    /// <returns>Um objeto com a mensagem "successful"</returns>
-    /// <response code="201">Retorna a resposta com sucesso.</response>
-    /// <response code="400">Retorna a resposta com erro.</response>
+    // <summary>
+    //Cria uma nova conta para o usuário.
+    //</summary>
+    //<param name="signupDto">Dados do formulário de cadastro.</param>
+    //<returns>Um objeto com a mensagem "successful"</returns>
+    //<response code="201">Retorna a resposta com sucesso.</response>
+    //<response code="400">Retorna a resposta com erro.</response>
+    //<returns></returns>
     [HttpPost]
 
     public async Task CreateUser([FromBody] SignupDto signupDto)
@@ -50,6 +48,11 @@ public class UserController : ControllerBase
         await _addressRepository.Create(newAddress);
     }
 
+    /// <summary>
+    /// Retorna todos usuários cadastrados no banco de dados
+    /// </summary>
+    /// <returns></returns>
+
     [HttpGet]
     public async Task<IActionResult> GetAllUsers()
     {
@@ -62,9 +65,29 @@ public class UserController : ControllerBase
     [Route("{id}")]
     public async Task<IActionResult> GetUserById(int id)
     {
-        User user = await _userRepository.GetById(id);
-        UserDto userDto = _mapper.Map<UserDto>(user);
-        return Ok(userDto);
+        try
+        {
+            
+            User user = await _userRepository.GetById(id);
+            if (user == null) throw new Exception("Usuario nao encontrado");
+            UserDto userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
+        }catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+       
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task DeleteUser(int id)
+    {
+
+        await _userRepository.Delete(id);
+
+
+   
     }
 
 }

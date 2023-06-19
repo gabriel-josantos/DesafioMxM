@@ -35,9 +35,12 @@ public abstract class BaseRepository<T> : IRepository<T> where T : Entity
     {
         throw new NotImplementedException();
     }
-    public Task Delete(T entity)
+    public async Task Delete(long id)
     {
-        throw new NotImplementedException();
+       var entity= await _dbContext.Set<T>().FindAsync(id);
+        _dbContext.Set<T>().Remove(entity);
+        await _dbContext.SaveChangesAsync();
+            
     }
 
 }
