@@ -28,7 +28,9 @@ export function UserInfo() {
     try {
       const id = inputRef.current?.value;
       setIsLoading(true);
-      const { data } = await axios.get(`https://localhost:7042/users/${id}`);
+      const { data } = await axios.get(
+        `https://mxmchallenge.up.railway.app/users/${id}`
+      );
       if (inputRef.current) inputRef.current.value = "";
 
       // if (data.type === "Pessoa física")

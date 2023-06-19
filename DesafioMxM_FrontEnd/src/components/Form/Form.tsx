@@ -55,7 +55,7 @@ export function Form() {
       setIsSubmitting(true);
 
       const response = await axios.post(
-        "https://localhost:7042/users",
+        "https://mxmchallenge.up.railway.app/users",
         JSON.stringify(data),
         {
           headers,
