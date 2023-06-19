@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { UserOutput } from "../UserOutput/UserOutput";
 import styles from "./style.module.css";
-import { maskJs } from "mask-js";
+// import { maskJs } from "mask-js";
 
 export function UserInfo() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,9 +28,7 @@ export function UserInfo() {
     try {
       const id = inputRef.current?.value;
       setIsLoading(true);
-      const { data } = await axios.get(
-        `https://mxmchallenge.up.railway.app/users/${id}`
-      );
+      const { data } = await axios.get(`https://localhost:7042/users/${id}`);
       if (inputRef.current) inputRef.current.value = "";
 
       // if (data.type === "Pessoa física")
